@@ -1,0 +1,17 @@
+version: '3'
+services:
+  squid:
+    image: ubuntu/squid:latest
+    environment:
+      - TZ=Asia/Seoul
+    volumes:
+      - ./squid.conf:/etc/squid/squid.conf
+      - squid-logs:/var/log/squid
+      - squid-data:/var/spool/squid
+    ports:
+      - 8888:8888
+    restart: unless-stopped
+
+volumes:
+  squid-data:
+  squid-logs:
